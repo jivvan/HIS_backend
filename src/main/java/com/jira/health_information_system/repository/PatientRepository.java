@@ -113,9 +113,7 @@ public class PatientRepository {
 
     public AverageStats getPatientAvgStats(Integer patientId) throws DataAccessException {
         try {
-            var res = jdbc.queryForObject("SELECT AVG(heart_rate) as avg_heart_rate, AVG(respiratory_rate) AS avg_respiratory_rate, AVG(sys_blood_pressure) AS avg_sys_blood_pressure," +
-                    "AVG(dia_blood_pressure) AS avg_dia_blood_pressure, AVG(oxygen_saturation) AS avg_oxygen_saturation, AVG(body_temperature) as avg_body_temperature" +
-                    "FROM checkup WHERE patient_id = ?;", avgItemMapper, patientId);
+            var res = jdbc.queryForObject("SELECT AVG(heart_rate) as avg_heart_rate, AVG(respiratory_rate) AS avg_respiratory_rate, AVG(sys_blood_pressure) AS avg_sys_blood_pressure, AVG(dia_blood_pressure) AS avg_dia_blood_pressure, AVG(oxygen_saturation) AS avg_oxygen_saturation, AVG(body_temperature) as avg_body_temperature FROM checkup WHERE patient_id = ?;", avgItemMapper, patientId);
             return res;
         } catch (DataAccessException ex) {
             throw ex;
